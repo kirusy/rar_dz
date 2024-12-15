@@ -53,6 +53,21 @@ int main()
                 if(int(p_header->header_type) != 116){
                         break;
                 }
-        }
+                else{
+                fileHead* d_header = reinterpret_cast<fileHead*> (&array[index]);
+                index += 25;
+                for(int i = index; i < index + int(d_header->nameSize);i++){
+                    cout << array[i];
+                    }
+                index -= 25;
+                cout << endl;
+                index -= 7;
+                index += int(d_header->packSize);
+                index +=  p_header->header_size;
+                }
+            cout <<"index: " << index;
+            cout << "\n" << endl;
 }
+}
+return 0;
 }
